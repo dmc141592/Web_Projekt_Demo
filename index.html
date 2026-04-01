@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Projekt Demo</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <h1>Creative Web Studio</h1>
+      <ul>
+        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#projects">Projekte</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <h2>Moderne Webseiten für kleine Unternehmen</h2>
+      <p>Wir entwickeln responsive und benutzerfreundliche Weblösungen.</p>
+      <a href="#projects" class="btn">Projekte ansehen</a>
+    </div>
+  </header>
+
+  <section id="services" class="section">
+    <h2>Leistungen</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Webdesign</h3>
+        <p>Moderne und responsive Webseiten mit HTML5 und CSS3.</p>
+      </div>
+      <div class="card">
+        <h3>CMS Integration</h3>
+        <p>Templates und Module einfach und sauber integrieren.</p>
+      </div>
+      <div class="card">
+        <h3>Support</h3>
+        <p>Anpassungen, Pflege und Weiterentwicklung bestehender Seiten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projekte</h2>
+    <div class="filter-buttons">
+     <button class="filter-btn active" data-filter="all">Alle</button>
+     <button class="filter-btn" data-filter="web">Web</button>
+     <button class="filter-btn" data-filter="design">Design</button>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card" data-category="web">
+        <h3>Firmenwebseite</h3>
+        <p>Responsive Website für ein lokales Unternehmen.</p>
+      </div>
+      <div class="project-card" data-category="design">
+        <h3>Landingpage</h3>
+        <p>Klare Struktur und modernes Layout für Kampagnen.</p>
+      </div>
+      <div class="project-card" data-category="web">
+       <h3>Portfolio Seite</h3>
+       <p>Saubere HTML/CSS-Struktur mit Kontaktbereich.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-question">Wie lange dauert ein Webprojekt?</div>
+      <div class="faq-answer">Je nach Umfang zwischen einigen Tagen und mehreren Wochen.</div>
+    </div>
+
+    <div class="faq-item">
+     <div class="faq-question">Ist die Webseite responsive?</div>
+     <div class="faq-answer">Ja, die Webseite ist für Desktop, Tablet und Mobile optimiert.</div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Kontakt</h2>
+    <form id="contactForm">
+     <input type="text" id="name" placeholder="Name" />
+     <input type="email" id="email" placeholder="E-Mail" />
+     <textarea id="message" placeholder="Nachricht"></textarea>
+     <button type="submit" class="btn">Senden</button>
+     <p id="formMessage"></p>
+    </form>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/index.js"></script>
+
+  <button id="scrollTopBtn">↑</button>
+</body>
+</html>
