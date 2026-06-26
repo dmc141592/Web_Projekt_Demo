@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-  // Button anzeigen/verstecken beim Scrollen
   $(window).scroll(function () {
     if ($(this).scrollTop() > 200) {
       $("#scrollTopBtn").fadeIn();
@@ -9,7 +8,6 @@ $(document).ready(function () {
     }
   });
 
-  // Klick → nach oben scrollen
   $("#scrollTopBtn").click(function () {
     $("html, body").animate({ scrollTop: 0 }, 600);
   });
@@ -32,7 +30,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#contactForm").submit(function (e) {
+  $("#contactForm").submit(async function (e) {
     e.preventDefault();
 
     const name = $("#name").val().trim();
@@ -45,9 +43,32 @@ $(document).ready(function () {
       return;
     }
 
-    $("#formMessage").text("Nachricht erfolgreich gesendet.");
-    $("#formMessage").css("color", "green");
+    try {
+      const response = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      });
 
-    $("#contactForm")[0].reset();
+      const data = await response.json();
+
+      if (data.success) {
+        $("#formMessage").text("Nachricht erfolgreich gespeichert.");
+        $("#formMessage").css("color", "green");
+        $("#contactForm")[0].reset();
+      } else {
+        $("#formMessage").text(data.error || "Fehler beim Senden.");
+        $("#formMessage").css("color", "red");
+      }
+    } catch (error) {
+      $("#formMessage").text("Backend nicht erreichbar.");
+      $("#formMessage").css("color", "red");
+    }
   });
 });
