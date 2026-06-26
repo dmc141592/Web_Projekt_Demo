@@ -1,100 +1,100 @@
-# Web Projekt Demo
+# Creative Web Studio
 
-Eine moderne Demo-Webseite für kleine Unternehmen mit responsive Design, FAQ-Bereich, Projektfilterung und Kontaktformular.
+A modern full-stack web application built with React, Express, and PostgreSQL.
 
-Das Projekt verwendet:
+This project demonstrates the development of a modern web application featuring a responsive user interface, a contact form connected to a backend API, and a PostgreSQL database for storing contact requests.
 
-* HTML5
+---
+
+## Technologies
+
+### Frontend
+
+* React
+* Vite
+* JavaScript (ES6+)
 * CSS3
-* JavaScript (jQuery)
+
+### Backend
+
 * Node.js
 * Express.js
+
+### Database
+
 * PostgreSQL
 
 ---
 
 ## Features
 
-* Responsive Landingpage
-* FAQ mit ausklappbaren Antworten
-* Projektfilter nach Kategorien
-* Scroll-to-Top Button
-* Kontaktformular mit Backend-Anbindung
-* Speicherung von Kontaktanfragen in PostgreSQL
+* Modern landing page
+* Responsive design
+* Hero section
+* Services overview
+* Project filtering
+* FAQ section
+* Contact form
+* REST API
+* PostgreSQL data storage
+* Component-based React architecture
 
 ---
 
-## Projektstruktur
+## Project Structure
 
 ```text
-web-demo/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── index.js
+WebProjektDemo/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Hero.jsx
+│   │   │   ├── Services.jsx
+│   │   │   ├── Projects.jsx
+│   │   │   ├── FAQ.jsx
+│   │   │   └── Contact.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
 ├── backend/
 │   ├── server.js
 │   ├── db.js
 │   ├── database.sql
-│   ├── package.json
-│   └── .env
+│   ├── .env
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## Voraussetzungen
+## Prerequisites
 
-Vor dem Start müssen folgende Programme installiert sein:
+Make sure the following software is installed:
 
-* Node.js
+* Node.js 
 * npm
 * PostgreSQL
+* pgAdmin 4
 
 ---
 
-## Installation
+## Database Setup
 
-### Repository klonen
-
-```bash
-git clone <repository-url>
-cd web-demo
-```
-
-### Backend-Abhängigkeiten installieren
-
-```bash
-cd backend
-npm install
-```
-
----
-
-## PostgreSQL einrichten
-
-### PostgreSQL starten
-
-Mit dem PostgreSQL-Benutzer anmelden:
-
-```bash
-psql -U postgres
-```
-
-### Datenbank erstellen
+### Create Database
 
 ```sql
 CREATE DATABASE web_demo;
 ```
 
-Mit der Datenbank verbinden:
-
-```sql
-\c web_demo
-```
-
-### Tabelle erstellen
+### Create Table
 
 ```sql
 CREATE TABLE contact_messages (
@@ -108,9 +108,15 @@ CREATE TABLE contact_messages (
 
 ---
 
-## Umgebungsvariablen
+## Environment Variables
 
-Im Backend-Verzeichnis eine Datei `.env` erstellen:
+Create the following file:
+
+```text
+backend/.env
+```
+
+Add the following content:
 
 ```env
 PORT=3000
@@ -124,15 +130,31 @@ DB_PORT=5432
 
 ---
 
-## Backend starten
+## Installation
 
-Im Verzeichnis `backend`:
+### Clone the Repository
+
+```bash
+git clone <repository-url>
+cd WebProjektDemo
+```
+
+---
+
+### Install Backend Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+Start the backend server:
 
 ```bash
 npm start
 ```
 
-Der Server läuft anschließend unter:
+The API will be available at:
 
 ```text
 http://localhost:3000
@@ -140,9 +162,32 @@ http://localhost:3000
 
 ---
 
+### Install Frontend Dependencies
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm install
+```
+
+Start the React development server:
+
+```bash
+npm run dev
+```
+
+Vite will usually run at:
+
+```text
+http://localhost:5173
+```
+
+---
+
 ## API Endpoints
 
-### Kontaktformular absenden
+### Create Contact Message
 
 ```http
 POST /api/contact
@@ -152,60 +197,119 @@ Request Body:
 
 ```json
 {
-  "name": "Max Mustermann",
-  "email": "max@example.com",
-  "message": "Hallo Welt"
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "Hello World"
+}
+```
+
+Response:
+
+```json
+{
+  "success": true
 }
 ```
 
 ---
 
-### Gespeicherte Nachrichten abrufen
+### Get All Messages
 
 ```http
 GET /api/messages
 ```
 
----
+Response:
 
-## Datenbank überprüfen
-
-Alle gespeicherten Nachrichten anzeigen:
-
-```sql
-SELECT * FROM contact_messages;
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "message": "Hello World",
+    "created_at": "2025-01-01T12:00:00.000Z"
+  }
+]
 ```
 
 ---
 
-## Verwendete Technologien
+## React Components
 
-| Technologie | Beschreibung          |
-| ----------- | --------------------- |
-| HTML5       | Struktur der Webseite |
-| CSS3        | Styling und Layout    |
-| JavaScript  | Frontend-Logik        |
-| jQuery      | DOM-Manipulation      |
-| Node.js     | Backend-Laufzeit      |
-| Express.js  | REST API              |
-| PostgreSQL  | Datenbank             |
+### Navbar
+
+Provides navigation between website sections.
+
+### Hero
+
+Landing section featuring the main headline and call-to-action button.
+
+### Services
+
+Displays the services offered.
+
+### Projects
+
+Project showcase with category filtering.
+
+### FAQ
+
+Interactive frequently asked questions section.
+
+### Contact
+
+Contact form connected to the backend and PostgreSQL database.
 
 ---
 
-## Zukünftige Erweiterungen
+## Development
 
-* Admin-Dashboard
-* Benutzerverwaltung
-* Authentifizierung mit JWT
-* E-Mail-Versand über SMTP
-* Upload von Dateien
-* Docker-Unterstützung
-* Deployment auf VPS oder Cloud
+Start Backend:
+
+```bash
+cd backend
+npm start
+```
+
+Start Frontend:
+
+```bash
+cd frontend
+npm run dev
+```
 
 ---
 
-## Lizenz
+## Future Improvements
 
-Dieses Projekt dient als Lern- und Demonstrationsprojekt.
+* User authentication
+* JWT-based authorization
+* Admin dashboard
+* Dark mode
+* Email notifications
+* File uploads
+* Docker support
+* Cloud deployment
+* CI/CD pipeline
 
-Feel free to use, modify and improve it.
+---
+
+## Learning Goals
+
+This project was built to practice and demonstrate:
+
+* React fundamentals
+* Component-based architecture
+* REST API development with Express
+* PostgreSQL integration
+* Full-stack application development
+* Modern frontend design principles
+
+---
+
+## License
+
+This project was created for educational and portfolio purposes.
+
+
